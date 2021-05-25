@@ -1,0 +1,56 @@
+name: Arista_AVD
+
+topology:
+  nodes:
+    DC1-L2LEAF1A:
+      kind: ceos
+      image: ceos64-lab:4.25.0F
+    DC1-L2LEAF2A:
+      kind: ceos
+      image: ceos64-lab:4.25.0F
+    DC1-LEAF1A:
+      kind: ceos
+      image: ceos64-lab:4.25.0F
+    DC1-LEAF1B:
+      kind: ceos
+      image: ceos64-lab:4.25.0F
+    DC1-LEAF2A:
+      kind: ceos
+      image: ceos64-lab:4.25.0F
+    DC1-LEAF2B:
+      kind: ceos
+      image: ceos64-lab:4.25.0F
+    DC1-SPINE1:
+      kind: ceos
+      image: ceos64-lab:4.25.0F
+    DC1-SPINE2:
+      kind: ceos
+      image: ceos64-lab:4.25.0F
+    server01:
+      kind: ceos
+      image: ceos64-lab:4.25.0F
+    server02:
+      kind: ceos
+      image: ceos64-lab:4.25.0F
+
+
+
+  links:
+    - endpoints: ["DC1-LEAF1A:eth1", "DC1-SPINE1:eth1"]
+    - endpoints: ["DC1-LEAF1A:eth2", "DC1-SPINE2:eth1"]
+    - endpoints: ["DC1-LEAF1A:eth3", "DC1-LEAF1B:eth3"]
+    - endpoints: ["DC1-LEAF1A:eth4", "DC1-LEAF1B:eth4"]
+    - endpoints: ["DC1-LEAF1A:eth5", "DC1-L2LEAF1A:eth1"]
+    - endpoints: ["DC1-LEAF1B:eth1", "DC1-SPINE1:eth2"]
+    - endpoints: ["DC1-LEAF1B:eth2", "DC1-SPINE2:eth2"]
+    - endpoints: ["DC1-LEAF1B:eth5", "DC1-L2LEAF1A:eth2"]
+    - endpoints: ["DC1-LEAF2A:eth1", "DC1-SPINE1:eth3"]
+    - endpoints: ["DC1-LEAF2A:eth2", "DC1-SPINE2:eth3"]
+    - endpoints: ["DC1-LEAF2A:eth3", "DC1-LEAF2B:eth3"]
+    - endpoints: ["DC1-LEAF2A:eth4", "DC1-LEAF2B:eth4"]
+    - endpoints: ["DC1-LEAF2B:eth1", "DC1-SPINE1:eth4"]
+    - endpoints: ["DC1-LEAF2B:eth2", "DC1-SPINE2:eth4"]
+    - endpoints: ["DC1-L2LEAF1A:eth5", "server01:eth1"]
+    - endpoints: ["DC1-L2LEAF2A:eth1", "DC1-LEAF2A:eth5"]
+    - endpoints: ["DC1-L2LEAF2A:eth2", "DC1-LEAF2B:eth5"]
+    - endpoints: ["DC1-L2LEAF2A:eth5", "server02:eth1"]
