@@ -1,3 +1,4 @@
+---
 name: Arista_AVD
 
 topology:
@@ -32,8 +33,6 @@ topology:
     server02:
       kind: ceos
       image: ceos64-lab:4.25.0F
-
-
 
   links:
     - endpoints: ["DC1-LEAF1A:eth1", "DC1-SPINE1:eth1"]
